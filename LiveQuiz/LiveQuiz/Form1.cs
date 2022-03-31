@@ -32,7 +32,7 @@ namespace LiveQuiz
 
         private void btnRegisterComplete_Click(object sender, EventArgs e)
         {
-            // Check if username is available
+            // Check if username is free of special characters
 
             // Check if passwords match
 
