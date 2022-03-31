@@ -45,6 +45,12 @@ namespace LiveQuiz
             this.label8 = new System.Windows.Forms.Label();
             this.lblPassError = new System.Windows.Forms.Label();
             this.btnRegisterComplete = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtAnon = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnJoinAnon = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -93,12 +99,13 @@ namespace LiveQuiz
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.LightGreen;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(16, 122);
+            this.label3.Location = new System.Drawing.Point(16, 264);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(529, 29);
             this.label3.TabIndex = 5;
@@ -109,7 +116,7 @@ namespace LiveQuiz
             // 
             this.txtUserRegister.Enabled = false;
             this.txtUserRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUserRegister.Location = new System.Drawing.Point(163, 200);
+            this.txtUserRegister.Location = new System.Drawing.Point(163, 342);
             this.txtUserRegister.Name = "txtUserRegister";
             this.txtUserRegister.Size = new System.Drawing.Size(382, 29);
             this.txtUserRegister.TabIndex = 7;
@@ -118,7 +125,7 @@ namespace LiveQuiz
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(12, 203);
+            this.label4.Location = new System.Drawing.Point(12, 345);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 21);
             this.label4.TabIndex = 6;
@@ -127,7 +134,7 @@ namespace LiveQuiz
             // btnRegisterStart
             // 
             this.btnRegisterStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRegisterStart.Location = new System.Drawing.Point(16, 160);
+            this.btnRegisterStart.Location = new System.Drawing.Point(16, 302);
             this.btnRegisterStart.Name = "btnRegisterStart";
             this.btnRegisterStart.Size = new System.Drawing.Size(529, 29);
             this.btnRegisterStart.TabIndex = 8;
@@ -140,7 +147,7 @@ namespace LiveQuiz
             this.lblUserError.AutoSize = true;
             this.lblUserError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblUserError.ForeColor = System.Drawing.Color.Red;
-            this.lblUserError.Location = new System.Drawing.Point(163, 232);
+            this.lblUserError.Location = new System.Drawing.Point(163, 374);
             this.lblUserError.Name = "lblUserError";
             this.lblUserError.Size = new System.Drawing.Size(141, 21);
             this.lblUserError.TabIndex = 12;
@@ -150,7 +157,7 @@ namespace LiveQuiz
             // 
             this.txtPass1Register.Enabled = false;
             this.txtPass1Register.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPass1Register.Location = new System.Drawing.Point(163, 266);
+            this.txtPass1Register.Location = new System.Drawing.Point(163, 408);
             this.txtPass1Register.Name = "txtPass1Register";
             this.txtPass1Register.PasswordChar = '*';
             this.txtPass1Register.Size = new System.Drawing.Size(382, 29);
@@ -160,7 +167,7 @@ namespace LiveQuiz
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(16, 269);
+            this.label7.Location = new System.Drawing.Point(16, 411);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 21);
             this.label7.TabIndex = 10;
@@ -170,7 +177,7 @@ namespace LiveQuiz
             // 
             this.txtPass2Register.Enabled = false;
             this.txtPass2Register.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPass2Register.Location = new System.Drawing.Point(163, 301);
+            this.txtPass2Register.Location = new System.Drawing.Point(163, 443);
             this.txtPass2Register.Name = "txtPass2Register";
             this.txtPass2Register.PasswordChar = '*';
             this.txtPass2Register.Size = new System.Drawing.Size(382, 29);
@@ -180,7 +187,7 @@ namespace LiveQuiz
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(16, 304);
+            this.label8.Location = new System.Drawing.Point(16, 446);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(140, 21);
             this.label8.TabIndex = 13;
@@ -191,7 +198,7 @@ namespace LiveQuiz
             this.lblPassError.AutoSize = true;
             this.lblPassError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPassError.ForeColor = System.Drawing.Color.Red;
-            this.lblPassError.Location = new System.Drawing.Point(163, 333);
+            this.lblPassError.Location = new System.Drawing.Point(163, 475);
             this.lblPassError.Name = "lblPassError";
             this.lblPassError.Size = new System.Drawing.Size(141, 21);
             this.lblPassError.TabIndex = 15;
@@ -201,7 +208,7 @@ namespace LiveQuiz
             // 
             this.btnRegisterComplete.Enabled = false;
             this.btnRegisterComplete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRegisterComplete.Location = new System.Drawing.Point(16, 368);
+            this.btnRegisterComplete.Location = new System.Drawing.Point(16, 510);
             this.btnRegisterComplete.Name = "btnRegisterComplete";
             this.btnRegisterComplete.Size = new System.Drawing.Size(529, 29);
             this.btnRegisterComplete.TabIndex = 16;
@@ -209,12 +216,77 @@ namespace LiveQuiz
             this.btnRegisterComplete.UseVisualStyleBackColor = true;
             this.btnRegisterComplete.Click += new System.EventHandler(this.btnRegisterComplete_Click);
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.LightGreen;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(16, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(529, 29);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Join a Quiz Anonymously!";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCode.Location = new System.Drawing.Point(295, 176);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.PasswordChar = '*';
+            this.txtCode.Size = new System.Drawing.Size(250, 29);
+            this.txtCode.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(291, 152);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(131, 21);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Quiz Room Code:";
+            // 
+            // txtAnon
+            // 
+            this.txtAnon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAnon.Location = new System.Drawing.Point(16, 176);
+            this.txtAnon.Name = "txtAnon";
+            this.txtAnon.Size = new System.Drawing.Size(250, 29);
+            this.txtAnon.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(12, 152);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(162, 21);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Temporary Username:";
+            // 
+            // btnJoinAnon
+            // 
+            this.btnJoinAnon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnJoinAnon.Location = new System.Drawing.Point(295, 222);
+            this.btnJoinAnon.Name = "btnJoinAnon";
+            this.btnJoinAnon.Size = new System.Drawing.Size(250, 29);
+            this.btnJoinAnon.TabIndex = 22;
+            this.btnJoinAnon.Text = "Join Quiz";
+            this.btnJoinAnon.UseVisualStyleBackColor = true;
+            this.btnJoinAnon.Click += new System.EventHandler(this.btnJoinAnon_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(563, 415);
+            this.ClientSize = new System.Drawing.Size(563, 557);
+            this.Controls.Add(this.btnJoinAnon);
+            this.Controls.Add(this.txtCode);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtAnon);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnRegisterComplete);
             this.Controls.Add(this.lblPassError);
             this.Controls.Add(this.txtPass2Register);
@@ -256,5 +328,11 @@ namespace LiveQuiz
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblPassError;
         private System.Windows.Forms.Button btnRegisterComplete;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtAnon;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnJoinAnon;
     }
 }

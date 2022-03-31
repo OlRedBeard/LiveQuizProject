@@ -6,6 +6,9 @@ namespace QuizClasses
 {
     public class QuizContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserScores> Scores { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(@"server=B231-14;database=QuizFaceDB;user id=QuizFace;password=P@$$word!");
