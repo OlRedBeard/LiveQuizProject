@@ -51,6 +51,8 @@ namespace LiveQuiz
             this.txtAnon = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnJoinAnon = new System.Windows.Forms.Button();
+            this.lblLoginError = new System.Windows.Forms.Label();
+            this.lblAnonError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -275,12 +277,36 @@ namespace LiveQuiz
             this.btnJoinAnon.UseVisualStyleBackColor = true;
             this.btnJoinAnon.Click += new System.EventHandler(this.btnJoinAnon_Click);
             // 
+            // lblLoginError
+            // 
+            this.lblLoginError.AutoSize = true;
+            this.lblLoginError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLoginError.ForeColor = System.Drawing.Color.Red;
+            this.lblLoginError.Location = new System.Drawing.Point(16, 81);
+            this.lblLoginError.Name = "lblLoginError";
+            this.lblLoginError.Size = new System.Drawing.Size(141, 21);
+            this.lblLoginError.TabIndex = 23;
+            this.lblLoginError.Text = "Desired Username:";
+            // 
+            // lblAnonError
+            // 
+            this.lblAnonError.AutoSize = true;
+            this.lblAnonError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAnonError.ForeColor = System.Drawing.Color.Red;
+            this.lblAnonError.Location = new System.Drawing.Point(16, 226);
+            this.lblAnonError.Name = "lblAnonError";
+            this.lblAnonError.Size = new System.Drawing.Size(141, 21);
+            this.lblAnonError.TabIndex = 24;
+            this.lblAnonError.Text = "Desired Username:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(563, 557);
+            this.Controls.Add(this.lblAnonError);
+            this.Controls.Add(this.lblLoginError);
             this.Controls.Add(this.btnJoinAnon);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label6);
@@ -334,5 +360,7 @@ namespace LiveQuiz
         private System.Windows.Forms.TextBox txtAnon;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnJoinAnon;
+        private System.Windows.Forms.Label lblLoginError;
+        private System.Windows.Forms.Label lblAnonError;
     }
 }

@@ -19,12 +19,14 @@ namespace LiveQuiz
             InitializeComponent();
             lblPassError.Text = "";
             lblUserError.Text = "";
+            lblLoginError.Text = "";
+            lblAnonError.Text = "";
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Check that both fields are filled
             if (txtUserLogin.Text == "" || txtPassLogin.Text == "")
-                MessageBox.Show("Please Enter Username and Password");
+                lblLoginError.Text = "Please Enter Username and Password";
 
             // Attempt to log the user in
             else
@@ -35,15 +37,20 @@ namespace LiveQuiz
                 bool success = QuiznessLayer.Login(txtUserLogin.Text, hashedPass);
                 // Alert the user if it fails
                 if (!success)
-                    MessageBox.Show("Incorrect Username or Password");
+                    lblLoginError.Text = "Incorrect Username or Password";
                 // Open the home form if it succeeds
-                else
-                    MessageBox.Show("Yaaay, you did it!"); // TEMPORARY
+                else 
+                {
+                    Home home = new Home();
+                    this.Hide();
+                    home.ShowDialog();
+                    this.Show();
+                }
             }
         }
         private void btnJoinAnon_Click(object sender, EventArgs e)
         {
-
+            // Check if room code is legitimate
         }
 
         private void btnRegisterStart_Click(object sender, EventArgs e)

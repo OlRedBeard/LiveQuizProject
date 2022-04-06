@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace QuizClasses
 {
-    public class UserScores
+    public class QuizQuestion
     {
         public int Id { get; set; }
-
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public string QuizName { get; set; }
-        public int Score { get; set; }
+        public string Question { get; set; }
+        public List<QuizAnswer> Answers { get; set; }
     }
 }

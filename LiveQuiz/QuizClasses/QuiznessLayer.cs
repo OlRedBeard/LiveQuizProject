@@ -49,5 +49,21 @@ namespace QuizClasses
                 return false;
             }
         }
+
+        public static List<Quiz> GetPublicQuizzes()
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    List<Quiz> list = qc.Quizzes.Where(x => x.IsPublic == true).ToList();
+                    return list;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
