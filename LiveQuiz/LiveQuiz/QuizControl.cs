@@ -14,21 +14,47 @@ namespace LiveQuiz
     public partial class QuizControl : UserControl
     {
         private int QuizID;
+        private bool Host;
 
-        public QuizControl(Quiz q)
+        public QuizControl(Quiz q, bool host)
         {
             InitializeComponent();
 
             lblQuizName.Text = q.Title;
-            lblCreator.Text = "Created By: " + q.Creator;
             lblTopic.Text = "Topic: " + q.Topic;
-
             QuizID = q.Id;
+            Host = host;
+
+            if (!Host) 
+            {
+                lblContext.Text = "Created By: " + q.Creator;
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+                btnContext.Text = "Join";
+            }
+            else
+            {
+                lblContext.Text = "Number of Questions: " + q.Questions.Count.ToString();
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
+                btnContext.Text = "Host";
+            }
         }
 
-        private void btnJoinQuiz_Click(object sender, EventArgs e)
+        private void btnContext_Click(object sender, EventArgs e)
         {
-            // Fire a delegate to return the quizid to the form
+            if (Host)
+            {
+                // Generate quiz instance, provide "room code", and launch hosting window
+            }
+            else
+            {
+                // Fetch room code and launch player window
+            }
         }
     }
 }

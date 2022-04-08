@@ -73,6 +73,11 @@ namespace LiveQuiz
             // Check if username is free of special characters
             if (hasSpecialCharacters(txtUserRegister.Text))
                 lblUserError.Text = "No Special Characters";
+            // Check if username is available
+            else if (!QuiznessLayer.CheckAvailableUserName(txtUserRegister.Text))
+            {
+                lblUserError.Text = "That Username is Already Taken";
+            }
             // Check if passwords match
             else if (txtPass1Register.Text != txtPass2Register.Text)
                 lblPassError.Text = "Passwords do not Match";

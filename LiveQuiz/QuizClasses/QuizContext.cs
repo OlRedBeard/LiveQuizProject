@@ -7,7 +7,7 @@ namespace QuizClasses
     public class QuizContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<UserScores> Scores { get; set; }
+        public DbSet<UserScore> Scores { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<QuizQuestion> Questions { get; set; }
         public DbSet<QuizAnswer> Answers { get; set; }

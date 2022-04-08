@@ -12,5 +12,11 @@ namespace QuizClasses
         public int Id { get; set; }
         public string Answer { get; set; }
         public bool Correct { get; set; }
+
+        public QuizAnswer(string answer, bool correct)
+        {
+            this.Answer = answer;
+            this.Correct = correct;
+        }
     }
 }

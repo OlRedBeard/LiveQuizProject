@@ -67,7 +67,6 @@
             this.flpContext.Name = "flpContext";
             this.flpContext.Size = new System.Drawing.Size(569, 348);
             this.flpContext.TabIndex = 2;
-            this.flpContext.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContext_Paint);
             // 
             // btnMyScores
             // 
@@ -117,6 +116,7 @@
             this.btnHome.TabIndex = 7;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnNewQuiz
             // 
@@ -127,6 +127,7 @@
             this.btnNewQuiz.TabIndex = 8;
             this.btnNewQuiz.Text = "Create New Quiz";
             this.btnNewQuiz.UseVisualStyleBackColor = true;
+            this.btnNewQuiz.Click += new System.EventHandler(this.btnNewQuiz_Click);
             // 
             // Home
             // 
