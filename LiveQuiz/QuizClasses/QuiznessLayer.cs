@@ -98,8 +98,22 @@ namespace QuizClasses
             {
                 using (QuizContext qc = new QuizContext())
                 {
-                    List<Quiz> list = qc.Quizzes.Include(a => a.Creator).Where(x => x.IsPublic == true).ToList();
-                    return list;
+                    List<Quiz> ret = new List<Quiz>();
+
+                    List<Quiz> list = qc.Quizzes.Include(a => a.Creator).Include(b => b.Instances).Where(x => x.IsPublic == true )
+                        .ToList();
+                    foreach(Quiz q in list)
+                    {           
+                        foreach (QuizInstance qi in q.Instances)
+                        {
+                            if (qi.Completed != true)
+                            {
+                                ret.Add(q);
+                            }
+                        }
+                                              
+                    }
+                    return ret;
                 }
             }
             catch

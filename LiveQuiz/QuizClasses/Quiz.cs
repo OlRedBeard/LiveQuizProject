@@ -17,6 +17,7 @@ namespace QuizClasses
         public string Title { get; set; }
         public string Topic { get; set; }
         public List<QuizQuestion> Questions { get; set; }
+        public List<QuizInstance> Instances { get; set; }
 
         public Quiz(User creator, bool isPub, string title, string topic)
         {
@@ -52,6 +53,11 @@ namespace QuizClasses
         public void AddQuestion(QuizQuestion question)
         {
             Questions.Add(question);
+        }
+
+        public void AddInstance(QuizInstance instance)
+        {
+            Instances.Add(instance);
         }
     }
 }

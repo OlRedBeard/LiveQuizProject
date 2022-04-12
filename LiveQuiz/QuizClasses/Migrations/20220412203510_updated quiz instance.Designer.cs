@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuizClasses;
 
 namespace QuizClasses.Migrations
 {
     [DbContext(typeof(QuizContext))]
-    partial class QuizContextModelSnapshot : ModelSnapshot
+    [Migration("20220412203510_updated quiz instance")]
+    partial class updatedquizinstance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,32 +70,6 @@ namespace QuizClasses.Migrations
                     b.ToTable("Answers");
                 });
 
-            modelBuilder.Entity("QuizClasses.QuizInstance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Completed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("HostIP")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("QuizId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RoomCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuizId");
-
-                    b.ToTable("Instances");
-                });
-
             modelBuilder.Entity("QuizClasses.QuizQuestion", b =>
                 {
                     b.Property<int>("Id")
@@ -124,9 +100,6 @@ namespace QuizClasses.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("QuizInstanceId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime2");
 
@@ -134,8 +107,6 @@ namespace QuizClasses.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("QuizInstanceId");
 
                     b.ToTable("Users");
                 });
@@ -179,25 +150,11 @@ namespace QuizClasses.Migrations
                         .HasForeignKey("QuizQuestionId");
                 });
 
-            modelBuilder.Entity("QuizClasses.QuizInstance", b =>
-                {
-                    b.HasOne("QuizClasses.Quiz", null)
-                        .WithMany("Instances")
-                        .HasForeignKey("QuizId");
-                });
-
             modelBuilder.Entity("QuizClasses.QuizQuestion", b =>
                 {
                     b.HasOne("QuizClasses.Quiz", null)
                         .WithMany("Questions")
                         .HasForeignKey("QuizId");
-                });
-
-            modelBuilder.Entity("QuizClasses.User", b =>
-                {
-                    b.HasOne("QuizClasses.QuizInstance", null)
-                        .WithMany("Contestants")
-                        .HasForeignKey("QuizInstanceId");
                 });
 
             modelBuilder.Entity("QuizClasses.UserScore", b =>
@@ -209,14 +166,7 @@ namespace QuizClasses.Migrations
 
             modelBuilder.Entity("QuizClasses.Quiz", b =>
                 {
-                    b.Navigation("Instances");
-
                     b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("QuizClasses.QuizInstance", b =>
-                {
-                    b.Navigation("Contestants");
                 });
 
             modelBuilder.Entity("QuizClasses.QuizQuestion", b =>

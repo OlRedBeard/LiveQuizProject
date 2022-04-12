@@ -10,13 +10,22 @@ namespace QuizClasses
     public class QuizInstance
     {
         public int Id { get; set; }
-        [ForeignKey("Quiz")]
-        public Quiz Quiz { get; set; }
-        [ForeignKey("User")]
-        public User Host { get; set; }
         public string RoomCode { get; set; }
+        public string HostIP { get; set; }
         public bool Completed { get; set; }
-        public bool Started { get; set; }
         public List<User> Contestants { get; set; }
+
+        public static Random random = new Random();
+
+        public QuizInstance()
+        {
+            this.RoomCode = GetRoomCode();
+        }
+
+        public string GetRoomCode()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            return new string(Enumerable.Repeat(chars, 5).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
     }
 }

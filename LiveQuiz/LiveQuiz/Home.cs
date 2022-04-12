@@ -13,6 +13,8 @@ namespace LiveQuiz
 {
     public partial class Home : Form
     {
+        // CHANGE PUBLIC QUIZES TO GRAB QUIZ INSTANCES WHERE "STARTED" = TRUE AND "PUBLIC" = TRUE
+
         public Home()
         {
             InitializeComponent();
@@ -86,7 +88,7 @@ namespace LiveQuiz
             // Change the labels
             lblContext.Text = "Join a Public Quiz!";
             // Load any public quizes into the flow layout panel
-            List<Quiz> pubQuizzes = QuiznessLayer.GetPublicQuizzes();
+            List<Quiz> pubQuizzes = QuiznessLayer.GetPublicQuizzes(); // CHANGE THIS!!
 
             if (pubQuizzes != null)
             {
