@@ -15,6 +15,7 @@ namespace LiveQuiz
     {
         private int QuizID;
         private bool Host;
+        public Quiz TheQuiz { get; set; }
 
         public QuizControl(Quiz q, bool host)
         {
@@ -23,6 +24,7 @@ namespace LiveQuiz
             lblQuizName.Text = q.Title;
             lblTopic.Text = "Topic: " + q.Topic;
             QuizID = q.Id;
+            TheQuiz = q;
             Host = host;
 
             if (!Host) 
@@ -49,7 +51,11 @@ namespace LiveQuiz
         {
             if (Host)
             {
-                // Generate quiz instance, provide "room code", and launch hosting window
+                // Launch hosting window
+                QuizHostForm qh = new QuizHostForm(TheQuiz);
+                this.Parent.Hide();
+                qh.ShowDialog();
+                this.Parent.Show();
             }
             else
             {

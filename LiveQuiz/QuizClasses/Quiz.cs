@@ -27,11 +27,13 @@ namespace QuizClasses
             this.Topic = topic;
 
             Questions = new List<QuizQuestion>();
+            Instances = new List<QuizInstance>();
         }
 
         public Quiz()
         {
             Questions = new List<QuizQuestion>();
+            Instances = new List<QuizInstance>();
         }
 
         public void Shuffle()
@@ -58,6 +60,11 @@ namespace QuizClasses
         public void AddInstance(QuizInstance instance)
         {
             Instances.Add(instance);
+        }
+
+        public void RemoveInstance(QuizInstance instance)
+        {
+            
         }
     }
 }

@@ -33,6 +33,8 @@
             this.btnBegin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlContestants = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbIP
@@ -82,11 +84,33 @@
             this.pnlContestants.Size = new System.Drawing.Size(266, 575);
             this.pnlContestants.TabIndex = 4;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(294, 587);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 21);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Room Code:";
+            // 
+            // lblCode
+            // 
+            this.lblCode.AutoSize = true;
+            this.lblCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCode.Location = new System.Drawing.Point(402, 587);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(102, 21);
+            this.lblCode.TabIndex = 6;
+            this.lblCode.Text = "Room Code:";
+            // 
             // QuizHostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 625);
+            this.Controls.Add(this.lblCode);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlContestants);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBegin);
@@ -94,6 +118,8 @@
             this.Controls.Add(this.cmbIP);
             this.Name = "QuizHostForm";
             this.Text = "QuizHostForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuizHostForm_FormClosing);
+            this.Load += new System.EventHandler(this.QuizHostForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +132,7 @@
         private System.Windows.Forms.Button btnBegin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlContestants;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCode;
     }
 }

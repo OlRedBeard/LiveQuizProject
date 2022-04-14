@@ -48,6 +48,48 @@ namespace QuizClasses
             }
         }
 
+        public static bool AddInstance(Quiz q, QuizInstance qi)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    Quiz result = qc.Quizzes.SingleOrDefault(x => x.Id == q.Id);
+                    if (result != null)
+                    {
+                        result.AddInstance(qi);
+                        qc.SaveChanges();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool EndInstance(QuizInstance qi)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    QuizInstance result = qc.Instances.SingleOrDefault(x => x.Id == qi.Id);
+                    if (result != null)
+                    {
+                        result.Completed = true;
+                        qc.SaveChanges();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool Login(string username, string hashedPass)
         {
             try
