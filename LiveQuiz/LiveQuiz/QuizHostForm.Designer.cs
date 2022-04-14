@@ -35,6 +35,12 @@
             this.pnlContestants = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
+            this.lblQuestion = new System.Windows.Forms.Label();
+            this.lblAns1 = new System.Windows.Forms.Label();
+            this.lblAns2 = new System.Windows.Forms.Label();
+            this.lblAns3 = new System.Windows.Forms.Label();
+            this.lblAns4 = new System.Windows.Forms.Label();
+            this.btnContext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbIP
@@ -104,11 +110,82 @@
             this.lblCode.TabIndex = 6;
             this.lblCode.Text = "Room Code:";
             // 
+            // lblQuestion
+            // 
+            this.lblQuestion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblQuestion.Location = new System.Drawing.Point(296, 33);
+            this.lblQuestion.Name = "lblQuestion";
+            this.lblQuestion.Size = new System.Drawing.Size(955, 267);
+            this.lblQuestion.TabIndex = 7;
+            this.lblQuestion.Text = "label3";
+            this.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAns1
+            // 
+            this.lblAns1.AutoSize = true;
+            this.lblAns1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns1.Location = new System.Drawing.Point(296, 325);
+            this.lblAns1.Name = "lblAns1";
+            this.lblAns1.Size = new System.Drawing.Size(52, 21);
+            this.lblAns1.TabIndex = 8;
+            this.lblAns1.Text = "label3";
+            this.lblAns1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAns2
+            // 
+            this.lblAns2.AutoSize = true;
+            this.lblAns2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns2.Location = new System.Drawing.Point(296, 360);
+            this.lblAns2.Name = "lblAns2";
+            this.lblAns2.Size = new System.Drawing.Size(52, 21);
+            this.lblAns2.TabIndex = 9;
+            this.lblAns2.Text = "label3";
+            this.lblAns2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAns3
+            // 
+            this.lblAns3.AutoSize = true;
+            this.lblAns3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns3.Location = new System.Drawing.Point(296, 396);
+            this.lblAns3.Name = "lblAns3";
+            this.lblAns3.Size = new System.Drawing.Size(52, 21);
+            this.lblAns3.TabIndex = 10;
+            this.lblAns3.Text = "label3";
+            this.lblAns3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAns4
+            // 
+            this.lblAns4.AutoSize = true;
+            this.lblAns4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns4.Location = new System.Drawing.Point(296, 432);
+            this.lblAns4.Name = "lblAns4";
+            this.lblAns4.Size = new System.Drawing.Size(52, 21);
+            this.lblAns4.TabIndex = 11;
+            this.lblAns4.Text = "label3";
+            this.lblAns4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnContext
+            // 
+            this.btnContext.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnContext.Location = new System.Drawing.Point(296, 549);
+            this.btnContext.Name = "btnContext";
+            this.btnContext.Size = new System.Drawing.Size(964, 29);
+            this.btnContext.TabIndex = 12;
+            this.btnContext.Text = "Next Question";
+            this.btnContext.UseVisualStyleBackColor = true;
+            this.btnContext.Click += new System.EventHandler(this.btnContext_Click);
+            // 
             // QuizHostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 625);
+            this.Controls.Add(this.btnContext);
+            this.Controls.Add(this.lblAns4);
+            this.Controls.Add(this.lblAns3);
+            this.Controls.Add(this.lblAns2);
+            this.Controls.Add(this.lblAns1);
+            this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlContestants);
@@ -134,5 +211,11 @@
         private System.Windows.Forms.Panel pnlContestants;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCode;
+        private System.Windows.Forms.Label lblQuestion;
+        private System.Windows.Forms.Label lblAns1;
+        private System.Windows.Forms.Label lblAns2;
+        private System.Windows.Forms.Label lblAns3;
+        private System.Windows.Forms.Label lblAns4;
+        private System.Windows.Forms.Button btnContext;
     }
 }

@@ -20,7 +20,6 @@ namespace QuizClasses
                     qc.Add(u);
                     qc.SaveChanges();                    
                 }
-
                 return true;
             }
             catch
@@ -39,12 +38,48 @@ namespace QuizClasses
                     qc.Add(q);
                     qc.SaveChanges();
                 }
-
                 return true;
             }
             catch
             {
                 return false;
+            }
+        }
+
+        public static string? GetIPbyQuiz(Quiz q)
+        {
+            try
+            {
+                string ip = "";
+                foreach(QuizInstance qi in q.Instances)
+                {
+                    if (qi.Completed == false)
+                        ip = qi.HostIP;
+                }
+                return ip;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static string? GetIPbyCode(string code)
+        {
+            try
+            {
+                string ip = "";
+                using (QuizContext qc = new QuizContext())
+                {
+                    QuizInstance tmp = qc.Instances.Where(x => x.RoomCode == code && x.Completed == false).FirstOrDefault();
+                    ip = tmp.RoomCode;
+                }
+
+                return ip;
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -170,8 +205,24 @@ namespace QuizClasses
             {
                 using (QuizContext qc = new QuizContext())
                 {
-                    List<Quiz> list = qc.Quizzes.Include(a => a.Creator).Include(b => b.Questions).Where(x => x.Creator == LoggedInUser).ToList();
+                    List<Quiz> list = qc.Quizzes.Include(a => a.Creator).Include(b => b.Questions).ThenInclude(c => c.Answers).Where(x => x.Creator == LoggedInUser).ToList();
                     return list;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<QuizAnswer> GetAnswers()
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    List<QuizAnswer> answer = qc.Answers.ToList();
+                    return answer;
                 }
             }
             catch

@@ -13,8 +13,6 @@ namespace LiveQuiz
 {
     public partial class Home : Form
     {
-        // CHANGE PUBLIC QUIZES TO GRAB QUIZ INSTANCES WHERE "STARTED" = TRUE AND "PUBLIC" = TRUE
-
         public Home()
         {
             InitializeComponent();

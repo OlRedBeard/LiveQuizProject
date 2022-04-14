@@ -23,6 +23,14 @@ namespace QuizClasses
         private BinaryWriter writer;
         private bool done = false;
 
+        public User theUser; 
+
+        public event NewClientConnectedEventHandler NewClientConnected;
+        public delegate void NewClientConnectedEventHandler(HostServer client);
+
+        public event UserAddedEventHandler UserAdded;
+        public delegate void UserAddedEventHandler(HostServer client, User u);
+
         public HostServer(TcpListener listener)
         {
             HostServer.Listener = listener;
@@ -33,9 +41,37 @@ namespace QuizClasses
             worker.RunWorkerAsync();
         }
 
+        public void SendUpdate(object o)
+        {
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(writer.BaseStream, o);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            try
+            {
+                if(e.ProgressPercentage == 0)
+                {
+                    NewClientConnected(this);
+                }
+                else if (e.ProgressPercentage == 1)
+                {
+                    UserAdded(this, (User)e.UserState);
+                }
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -57,9 +93,9 @@ namespace QuizClasses
                         object o = (object)formatter.Deserialize(reader.BaseStream);
 
                         // Check what the type is
-                        if (o is QuizAnswer)
+                        if (o is User)
                         {
-
+                            worker.ReportProgress(1, o);
                         }
                         else
                         {

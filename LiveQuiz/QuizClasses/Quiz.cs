@@ -61,10 +61,5 @@ namespace QuizClasses
         {
             Instances.Add(instance);
         }
-
-        public void RemoveInstance(QuizInstance instance)
-        {
-            
-        }
     }
 }

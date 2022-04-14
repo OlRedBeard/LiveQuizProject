@@ -72,6 +72,7 @@ namespace LiveQuiz
             this.txtUserLogin.Name = "txtUserLogin";
             this.txtUserLogin.Size = new System.Drawing.Size(250, 29);
             this.txtUserLogin.TabIndex = 1;
+            this.txtUserLogin.Text = "Gerrit";
             // 
             // label2
             // 
@@ -91,6 +92,7 @@ namespace LiveQuiz
             this.txtPassLogin.PasswordChar = '*';
             this.txtPassLogin.Size = new System.Drawing.Size(250, 29);
             this.txtPassLogin.TabIndex = 3;
+            this.txtPassLogin.Text = "Password";
             // 
             // btnLogin
             // 

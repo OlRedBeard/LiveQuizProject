@@ -29,7 +29,7 @@ namespace LiveQuiz
 
             if (!Host) 
             {
-                lblContext.Text = "Created By: " + q.Creator;
+                lblContext.Text = "Created By: " + q.Creator.Username;
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
                 btnEdit.Visible = false;
@@ -60,6 +60,10 @@ namespace LiveQuiz
             else
             {
                 // Fetch room code and launch player window
+                QuizContestantForm qcf = new QuizContestantForm(TheQuiz);
+                this.Parent.Hide();
+                qcf.ShowDialog();
+                this.Parent.Show();
             }
         }
     }
