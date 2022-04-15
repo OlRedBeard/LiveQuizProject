@@ -19,6 +19,7 @@ namespace LiveQuiz
     {
         Quiz TheQuiz;
         ContestantComms comm;
+        Anon aUser;
 
         public int Points = 300;
         public bool anonUser = false;
@@ -54,6 +55,7 @@ namespace LiveQuiz
             btnAns3.Visible = false;
             btnAns4.Visible = false;
             anonUser = true;
+            aUser = a;
             lblTimer.Visible = false;
         }
 
@@ -164,6 +166,11 @@ namespace LiveQuiz
             if (QuiznessLayer.LoggedInUser != null)
             {
                 comm.SendUserInfo(QuiznessLayer.LoggedInUser);
+            }
+
+            if (anonUser)
+            {
+                comm.SendUserInfo(aUser);
             }
         }
 

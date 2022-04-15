@@ -28,6 +28,25 @@ namespace QuizClasses
             }
         }
 
+        public static bool CreateAnon(Anon a)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    qc.Add(a);
+                    qc.SaveChanges();
+                }
+                LoggedInUser = a;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool AddQuiz(Quiz q)
         {
             try
@@ -72,7 +91,7 @@ namespace QuizClasses
             {
                 using (QuizContext qc = new QuizContext())
                 {
-                    Quiz tmp = qc.Quizzes.Include(a => a.Questions).ThenInclude(b => b.Answers).Where(x => x.Id == id).SingleOrDefault();
+                    Quiz tmp = qc.Quizzes.Include(b => b.Instances).Include(a => a.Questions).ThenInclude(b => b.Answers).Where(x => x.Id == id).SingleOrDefault();
                     qc.Remove(tmp);
                     qc.SaveChanges();
                 }
@@ -249,7 +268,7 @@ namespace QuizClasses
             {
                 using (QuizContext qc = new QuizContext())
                 {
-                    int count = qc.Users.Where(x => x.Username == username).Count();
+                    int count = qc.Users.Where(x => x.Username == username && !(x is Anon)).Count();
                     if (count < 1)
                         return true;
                     else
@@ -283,8 +302,7 @@ namespace QuizClasses
                             {
                                 ret.Add(q);
                             }
-                        }
-                                              
+                        }                                              
                     }
                     return ret;
                 }

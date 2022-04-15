@@ -12,6 +12,7 @@ namespace QuizClasses
         public DbSet<QuizQuestion> Questions { get; set; }
         public DbSet<QuizAnswer> Answers { get; set; }
         public DbSet<QuizInstance> Instances { get; set; }
+        public DbSet<Anon> AnonUsers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

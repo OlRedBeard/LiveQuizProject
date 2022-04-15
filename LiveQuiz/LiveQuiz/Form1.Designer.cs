@@ -73,7 +73,6 @@ namespace LiveQuiz
             this.txtUserLogin.Name = "txtUserLogin";
             this.txtUserLogin.Size = new System.Drawing.Size(250, 29);
             this.txtUserLogin.TabIndex = 1;
-            this.txtUserLogin.Text = "Gerrit";
             // 
             // label2
             // 
@@ -93,7 +92,6 @@ namespace LiveQuiz
             this.txtPassLogin.PasswordChar = '*';
             this.txtPassLogin.Size = new System.Drawing.Size(250, 29);
             this.txtPassLogin.TabIndex = 2;
-            this.txtPassLogin.Text = "Password";
             // 
             // btnLogin
             // 
@@ -237,7 +235,6 @@ namespace LiveQuiz
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCode.Location = new System.Drawing.Point(295, 176);
             this.txtCode.Name = "txtCode";
-            this.txtCode.PasswordChar = '*';
             this.txtCode.Size = new System.Drawing.Size(250, 29);
             this.txtCode.TabIndex = 5;
             // 

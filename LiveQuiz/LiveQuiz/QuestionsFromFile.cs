@@ -36,19 +36,22 @@ namespace LiveQuiz
                 fileLines = File.ReadAllLines(op.FileName);
                 foreach (string line in fileLines)
                 {
-                    string question = line.Split('|')[0];
-                    string corrAnsw = line.Split('|')[1];
-                    QuizQuestion qq = new QuizQuestion(question);
-                    QuizAnswer qa = new QuizAnswer(corrAnsw, true);
-                    qq.AddAnswer(qa);
-
-                    for (int i = 2; i < line.Split('|').Length; i++)
+                    if (line != "")
                     {
-                        QuizAnswer tmp = new QuizAnswer(line.Split('|')[i], false);
-                        qq.AddAnswer(tmp);
-                    }
+                        string question = line.Split('|')[0];
+                        string corrAnsw = line.Split('|')[1];
+                        QuizQuestion qq = new QuizQuestion(question);
+                        QuizAnswer qa = new QuizAnswer(corrAnsw, true);
+                        qq.AddAnswer(qa);
 
-                    theQuiz.AddQuestion(qq);
+                        for (int i = 2; i < line.Split('|').Length; i++)
+                        {
+                            QuizAnswer tmp = new QuizAnswer(line.Split('|')[i], false);
+                            qq.AddAnswer(tmp);
+                        }
+
+                        theQuiz.AddQuestion(qq);
+                    }
                 }
             }
         }

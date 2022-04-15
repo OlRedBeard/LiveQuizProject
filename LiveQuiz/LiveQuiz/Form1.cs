@@ -51,7 +51,9 @@ namespace LiveQuiz
         private void btnJoinAnon_Click(object sender, EventArgs e)
         {
             // Check if username is available
-            if (!QuiznessLayer.CheckAvailableUserName(txtUserRegister.Text))
+            bool available = QuiznessLayer.CheckAvailableUserName(txtAnon.Text);
+
+            if (!available)
                 lblAnonError.Text = "Username Taken";            
             else
             {
@@ -60,13 +62,26 @@ namespace LiveQuiz
 
                 if (tmp != null)
                 {
-                    Anon anonUser = new Anon(txtAnon.Text);
-                    QuiznessLayer.LoggedInUser = anonUser;
+                    Anon au = new Anon()
+                    {
+                        Username = txtAnon.Text,
+                        Password = null,
+                        RegistrationDate = DateTime.Now,
+                    };
+                    bool success = QuiznessLayer.CreateAnon(au);
 
-                    QuizContestantForm qcf = new QuizContestantForm(tmp, anonUser);
-                    this.Hide();
-                    qcf.ShowDialog();
-                    this.Show();
+                    if (success)
+                    {
+                        QuizContestantForm qcf = new QuizContestantForm(tmp, au);
+                        this.Hide();
+                        qcf.ShowDialog();
+                        this.Show();
+                    }
+                    
+                }
+                else
+                {
+                    lblAnonError.Text = "Code Not Valid";
                 }
             }
         }

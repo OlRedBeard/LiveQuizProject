@@ -9,10 +9,5 @@ namespace QuizClasses
     [Serializable]
     public class Anon : User
     {
-        public Anon(string name)
-        {
-            this.Username = name;
-            this.Password = null;
-        }
     }
 }
