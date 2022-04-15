@@ -41,6 +41,8 @@
             this.lblAns3 = new System.Windows.Forms.Label();
             this.lblAns4 = new System.Windows.Forms.Label();
             this.btnContext = new System.Windows.Forms.Button();
+            this.lblAnswers = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbIP
@@ -112,10 +114,11 @@
             // 
             // lblQuestion
             // 
-            this.lblQuestion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblQuestion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblQuestion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblQuestion.Location = new System.Drawing.Point(296, 33);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(955, 267);
+            this.lblQuestion.Size = new System.Drawing.Size(964, 267);
             this.lblQuestion.TabIndex = 7;
             this.lblQuestion.Text = "label3";
             this.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -123,10 +126,10 @@
             // lblAns1
             // 
             this.lblAns1.AutoSize = true;
-            this.lblAns1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAns1.Location = new System.Drawing.Point(296, 325);
             this.lblAns1.Name = "lblAns1";
-            this.lblAns1.Size = new System.Drawing.Size(52, 21);
+            this.lblAns1.Size = new System.Drawing.Size(63, 25);
             this.lblAns1.TabIndex = 8;
             this.lblAns1.Text = "label3";
             this.lblAns1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -134,10 +137,10 @@
             // lblAns2
             // 
             this.lblAns2.AutoSize = true;
-            this.lblAns2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAns2.Location = new System.Drawing.Point(296, 360);
             this.lblAns2.Name = "lblAns2";
-            this.lblAns2.Size = new System.Drawing.Size(52, 21);
+            this.lblAns2.Size = new System.Drawing.Size(63, 25);
             this.lblAns2.TabIndex = 9;
             this.lblAns2.Text = "label3";
             this.lblAns2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,10 +148,10 @@
             // lblAns3
             // 
             this.lblAns3.AutoSize = true;
-            this.lblAns3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAns3.Location = new System.Drawing.Point(296, 396);
             this.lblAns3.Name = "lblAns3";
-            this.lblAns3.Size = new System.Drawing.Size(52, 21);
+            this.lblAns3.Size = new System.Drawing.Size(63, 25);
             this.lblAns3.TabIndex = 10;
             this.lblAns3.Text = "label3";
             this.lblAns3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,10 +159,10 @@
             // lblAns4
             // 
             this.lblAns4.AutoSize = true;
-            this.lblAns4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAns4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAns4.Location = new System.Drawing.Point(296, 432);
             this.lblAns4.Name = "lblAns4";
-            this.lblAns4.Size = new System.Drawing.Size(52, 21);
+            this.lblAns4.Size = new System.Drawing.Size(63, 25);
             this.lblAns4.TabIndex = 11;
             this.lblAns4.Text = "label3";
             this.lblAns4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,11 +178,33 @@
             this.btnContext.UseVisualStyleBackColor = true;
             this.btnContext.Click += new System.EventHandler(this.btnContext_Click);
             // 
+            // lblAnswers
+            // 
+            this.lblAnswers.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAnswers.Location = new System.Drawing.Point(296, 494);
+            this.lblAnswers.Name = "lblAnswers";
+            this.lblAnswers.Size = new System.Drawing.Size(964, 52);
+            this.lblAnswers.TabIndex = 13;
+            this.lblAnswers.Text = "label3";
+            this.lblAnswers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(294, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(133, 21);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Current Question:";
+            // 
             // QuizHostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 625);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblAnswers);
             this.Controls.Add(this.btnContext);
             this.Controls.Add(this.lblAns4);
             this.Controls.Add(this.lblAns3);
@@ -217,5 +242,7 @@
         private System.Windows.Forms.Label lblAns3;
         private System.Windows.Forms.Label lblAns4;
         private System.Windows.Forms.Button btnContext;
+        private System.Windows.Forms.Label lblAnswers;
+        private System.Windows.Forms.Label label3;
     }
 }

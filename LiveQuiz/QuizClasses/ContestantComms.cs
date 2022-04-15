@@ -31,7 +31,19 @@ namespace QuizClasses
         public delegate void ConnectionFailedEventHandler(string servername, int port);
 
         public event UserAddedEventHandler UserAdded;
-        public delegate void UserAddedEventHandler(User u);
+        public delegate void UserAddedEventHandler(Tuple<User, UserScore> details);
+
+        public event NextQuestionEventHandler NewQuestion;
+        public delegate void NextQuestionEventHandler(QuizQuestion qq);
+
+        public event AnswerResultEventHandler AnswerResult;
+        public delegate void AnswerResultEventHandler(Tuple<User, QuizAnswer, int> answer);
+
+        public event ResultsEventHandler FinalResults;
+        public delegate void ResultsEventHandler(string results);
+
+        public event GameOverEventHandler GameOver;
+        public delegate void GameOverEventHandler();
 
         public ContestantComms(string servername)
         {
@@ -47,6 +59,12 @@ namespace QuizClasses
         {
             IFormatter formatter = new BinaryFormatter();
             formatter.Serialize(writer.BaseStream, u);
+        }
+
+        public void SendAnswer(Tuple<User, QuizAnswer, int> response)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(writer.BaseStream, response);
         }
 
         private void Bgw_DoWork(object sender, DoWorkEventArgs e)
@@ -68,9 +86,28 @@ namespace QuizClasses
                         IFormatter formatter = new BinaryFormatter();
                         object o = (object)formatter.Deserialize(nStream);
 
-                        if (o is User)
+                        if (o is Tuple<User, UserScore>)
                         {
                             bgw.ReportProgress(0, o);
+                        }
+                        else if (o is QuizQuestion)
+                        {
+                            bgw.ReportProgress(1, o);
+                        }
+                        else if (o is Tuple<User, QuizAnswer, int> answer)
+                        {
+                            bgw.ReportProgress(2, o);
+                        }
+                        else if (o is int)
+                        {
+                            if ((int)o == 0)
+                            {
+                                bgw.ReportProgress(3);
+                            }
+                        }
+                        else if (o is string)
+                        {
+                            bgw.ReportProgress(4, o);
                         }
                     }
                 }
@@ -89,7 +126,23 @@ namespace QuizClasses
         {
             if(e.ProgressPercentage == 0)
             {
-                UserAdded((User)e.UserState);
+                UserAdded((Tuple<User, UserScore>)e.UserState);
+            }
+            else if (e.ProgressPercentage == 1)
+            {
+                NewQuestion((QuizQuestion)e.UserState);
+            }
+            else if (e.ProgressPercentage == 2)
+            {
+                AnswerResult((Tuple<User, QuizAnswer, int>)e.UserState);
+            }
+            else if (e.ProgressPercentage == 3)
+            {
+                GameOver();
+            }
+            else if (e.ProgressPercentage == 4)
+            {
+                FinalResults(e.UserState.ToString());
             }
         }
     }

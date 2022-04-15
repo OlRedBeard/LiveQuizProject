@@ -50,7 +50,25 @@ namespace LiveQuiz
         }
         private void btnJoinAnon_Click(object sender, EventArgs e)
         {
-            // Check if room code is legitimate
+            // Check if username is available
+            if (!QuiznessLayer.CheckAvailableUserName(txtUserRegister.Text))
+                lblAnonError.Text = "Username Taken";            
+            else
+            {
+                // Check if room code is legitimate
+                Quiz tmp = QuiznessLayer.GetQuizbyCode(txtCode.Text);
+
+                if (tmp != null)
+                {
+                    Anon anonUser = new Anon(txtAnon.Text);
+                    QuiznessLayer.LoggedInUser = anonUser;
+
+                    QuizContestantForm qcf = new QuizContestantForm(tmp, anonUser);
+                    this.Hide();
+                    qcf.ShowDialog();
+                    this.Show();
+                }
+            }
         }
 
         private void btnRegisterStart_Click(object sender, EventArgs e)
@@ -62,6 +80,7 @@ namespace LiveQuiz
             txtPass1Register.Enabled = true;
             txtPass2Register.Enabled = true;
             btnRegisterComplete.Enabled = true;
+            btnCancel.Enabled = true;
         }
 
         private void btnRegisterComplete_Click(object sender, EventArgs e)
@@ -139,6 +158,21 @@ namespace LiveQuiz
                 sb.Append(encoded[i].ToString("X2"));
             }
             return sb.ToString();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtUserLogin.Enabled = true;
+            txtPassLogin.Enabled = true;
+
+            txtUserRegister.Text = "";
+            txtPass1Register.Text = "";
+            txtPass2Register.Text = "";
+            txtUserRegister.Enabled = false;
+            txtPass1Register.Enabled = false;
+            txtPass2Register.Enabled = false;
+            btnRegisterComplete.Enabled = false;
+            btnCancel.Enabled = false;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuizClasses
 {
+    [Serializable]
     public class QuizQuestion
     {
         static Random rnd = new Random();

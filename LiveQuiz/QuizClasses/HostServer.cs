@@ -31,6 +31,9 @@ namespace QuizClasses
         public event UserAddedEventHandler UserAdded;
         public delegate void UserAddedEventHandler(HostServer client, User u);
 
+        public event UserAnswerEventHandler UserAnswer;
+        public delegate void UserAnswerEventHandler(HostServer client, Tuple<User, QuizAnswer, int> answer);
+
         public HostServer(TcpListener listener)
         {
             HostServer.Listener = listener;
@@ -67,6 +70,10 @@ namespace QuizClasses
                 {
                     UserAdded(this, (User)e.UserState);
                 }
+                else if (e.ProgressPercentage == 2)
+                {
+                    UserAnswer(this, (Tuple<User, QuizAnswer, int>)e.UserState);
+                }
             }
             catch
             {
@@ -97,9 +104,9 @@ namespace QuizClasses
                         {
                             worker.ReportProgress(1, o);
                         }
-                        else
+                        else if (o is Tuple<User, QuizAnswer, int>)
                         {
-
+                            worker.ReportProgress(2, o);
                         }
                     }
                     catch

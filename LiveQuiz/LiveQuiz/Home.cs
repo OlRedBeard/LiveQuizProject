@@ -98,5 +98,11 @@ namespace LiveQuiz
             }
         }
 
+        private void btnJoinCode_Click(object sender, EventArgs e)
+        {
+            Quiz tmp = QuiznessLayer.GetQuizbyCode(txtCode.Text);
+            QuizContestantForm qcf = new QuizContestantForm(tmp);
+            qcf.ShowDialog();
+        }
     }
 }

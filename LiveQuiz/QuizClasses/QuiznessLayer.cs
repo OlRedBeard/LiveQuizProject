@@ -64,22 +64,62 @@ namespace QuizClasses
             }
         }
 
-        public static string? GetIPbyCode(string code)
+        public static Quiz GetQuizbyCode(string code)
         {
+            Quiz tmp = null;
+
             try
             {
-                string ip = "";
                 using (QuizContext qc = new QuizContext())
                 {
-                    QuizInstance tmp = qc.Instances.Where(x => x.RoomCode == code && x.Completed == false).FirstOrDefault();
-                    ip = tmp.RoomCode;
+                    QuizInstance qi = qc.Instances.Where(x => x.RoomCode == code && x.Completed == false).FirstOrDefault();
+
+                    if (qi != null)
+                        tmp = qc.Quizzes.Include(a => a.Instances).Where(x => x.Instances.Contains(qi)).FirstOrDefault();
                 }
 
-                return ip;
+                return tmp;
             }
             catch
             {
-                return null;
+                return tmp;
+            }
+        }
+
+        public static bool UpdateUser(UserScore score)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    User usr = qc.Users.Include(a => a.UserScores).Where(x => x.Id == LoggedInUser.Id).SingleOrDefault();
+                    bool exists = false;
+
+                    if (usr != null)
+                    {
+                        foreach (UserScore us in usr.UserScores)
+                        {
+                            if (us.QuizName == score.QuizName)
+                            {
+                                us.Score = score.Score;
+                                us.NumQuestions = score.NumQuestions;
+                                us.NumCorrect = score.NumCorrect;
+                                us.TimeToAnswer = score.TimeToAnswer;
+                                exists = true;
+                            }
+                        }
+
+                        if (!exists)
+                            usr.UserScores.Add(score);
+
+                        qc.SaveChanges();
+                    }                    
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 

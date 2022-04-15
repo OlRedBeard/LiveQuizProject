@@ -53,6 +53,7 @@ namespace LiveQuiz
             this.btnJoinAnon = new System.Windows.Forms.Button();
             this.lblLoginError = new System.Windows.Forms.Label();
             this.lblAnonError = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +92,7 @@ namespace LiveQuiz
             this.txtPassLogin.Name = "txtPassLogin";
             this.txtPassLogin.PasswordChar = '*';
             this.txtPassLogin.Size = new System.Drawing.Size(250, 29);
-            this.txtPassLogin.TabIndex = 3;
+            this.txtPassLogin.TabIndex = 2;
             this.txtPassLogin.Text = "Password";
             // 
             // btnLogin
@@ -100,7 +101,7 @@ namespace LiveQuiz
             this.btnLogin.Location = new System.Drawing.Point(295, 77);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(250, 29);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -123,7 +124,7 @@ namespace LiveQuiz
             this.txtUserRegister.Location = new System.Drawing.Point(163, 342);
             this.txtUserRegister.Name = "txtUserRegister";
             this.txtUserRegister.Size = new System.Drawing.Size(382, 29);
-            this.txtUserRegister.TabIndex = 7;
+            this.txtUserRegister.TabIndex = 8;
             // 
             // label4
             // 
@@ -141,7 +142,7 @@ namespace LiveQuiz
             this.btnRegisterStart.Location = new System.Drawing.Point(16, 302);
             this.btnRegisterStart.Name = "btnRegisterStart";
             this.btnRegisterStart.Size = new System.Drawing.Size(529, 29);
-            this.btnRegisterStart.TabIndex = 8;
+            this.btnRegisterStart.TabIndex = 7;
             this.btnRegisterStart.Text = "Register New Account";
             this.btnRegisterStart.UseVisualStyleBackColor = true;
             this.btnRegisterStart.Click += new System.EventHandler(this.btnRegisterStart_Click);
@@ -165,7 +166,7 @@ namespace LiveQuiz
             this.txtPass1Register.Name = "txtPass1Register";
             this.txtPass1Register.PasswordChar = '*';
             this.txtPass1Register.Size = new System.Drawing.Size(382, 29);
-            this.txtPass1Register.TabIndex = 11;
+            this.txtPass1Register.TabIndex = 9;
             // 
             // label7
             // 
@@ -185,7 +186,7 @@ namespace LiveQuiz
             this.txtPass2Register.Name = "txtPass2Register";
             this.txtPass2Register.PasswordChar = '*';
             this.txtPass2Register.Size = new System.Drawing.Size(382, 29);
-            this.txtPass2Register.TabIndex = 14;
+            this.txtPass2Register.TabIndex = 10;
             // 
             // label8
             // 
@@ -212,10 +213,10 @@ namespace LiveQuiz
             // 
             this.btnRegisterComplete.Enabled = false;
             this.btnRegisterComplete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRegisterComplete.Location = new System.Drawing.Point(16, 510);
+            this.btnRegisterComplete.Location = new System.Drawing.Point(285, 510);
             this.btnRegisterComplete.Name = "btnRegisterComplete";
-            this.btnRegisterComplete.Size = new System.Drawing.Size(529, 29);
-            this.btnRegisterComplete.TabIndex = 16;
+            this.btnRegisterComplete.Size = new System.Drawing.Size(260, 29);
+            this.btnRegisterComplete.TabIndex = 12;
             this.btnRegisterComplete.Text = "Register";
             this.btnRegisterComplete.UseVisualStyleBackColor = true;
             this.btnRegisterComplete.Click += new System.EventHandler(this.btnRegisterComplete_Click);
@@ -238,7 +239,7 @@ namespace LiveQuiz
             this.txtCode.Name = "txtCode";
             this.txtCode.PasswordChar = '*';
             this.txtCode.Size = new System.Drawing.Size(250, 29);
-            this.txtCode.TabIndex = 21;
+            this.txtCode.TabIndex = 5;
             // 
             // label6
             // 
@@ -256,7 +257,7 @@ namespace LiveQuiz
             this.txtAnon.Location = new System.Drawing.Point(16, 176);
             this.txtAnon.Name = "txtAnon";
             this.txtAnon.Size = new System.Drawing.Size(250, 29);
-            this.txtAnon.TabIndex = 19;
+            this.txtAnon.TabIndex = 4;
             // 
             // label9
             // 
@@ -274,7 +275,7 @@ namespace LiveQuiz
             this.btnJoinAnon.Location = new System.Drawing.Point(295, 222);
             this.btnJoinAnon.Name = "btnJoinAnon";
             this.btnJoinAnon.Size = new System.Drawing.Size(250, 29);
-            this.btnJoinAnon.TabIndex = 22;
+            this.btnJoinAnon.TabIndex = 6;
             this.btnJoinAnon.Text = "Join Quiz";
             this.btnJoinAnon.UseVisualStyleBackColor = true;
             this.btnJoinAnon.Click += new System.EventHandler(this.btnJoinAnon_Click);
@@ -301,12 +302,25 @@ namespace LiveQuiz
             this.lblAnonError.TabIndex = 24;
             this.lblAnonError.Text = "Desired Username:";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.Location = new System.Drawing.Point(12, 510);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(260, 29);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(563, 557);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblAnonError);
             this.Controls.Add(this.lblLoginError);
             this.Controls.Add(this.btnJoinAnon);
@@ -364,5 +378,6 @@ namespace LiveQuiz
         private System.Windows.Forms.Button btnJoinAnon;
         private System.Windows.Forms.Label lblLoginError;
         private System.Windows.Forms.Label lblAnonError;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

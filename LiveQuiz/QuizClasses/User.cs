@@ -15,5 +15,10 @@ namespace QuizClasses
         public string Password { get; set; }
         public DateTime RegistrationDate { get; set; }
         public List<UserScore> UserScores { get; set; }
+
+        public User()
+        {
+            UserScores = new List<UserScore>();
+        }
     }
 }

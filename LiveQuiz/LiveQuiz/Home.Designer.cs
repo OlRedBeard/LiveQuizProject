@@ -32,7 +32,7 @@
             this.lblContext = new System.Windows.Forms.Label();
             this.flpContext = new System.Windows.Forms.FlowLayoutPanel();
             this.btnMyScores = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.btnJoinCode = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
@@ -79,13 +79,14 @@
             this.btnMyScores.UseVisualStyleBackColor = true;
             this.btnMyScores.Click += new System.EventHandler(this.btnMyScores_Click);
             // 
-            // textBox1
+            // txtCode
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(12, 310);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 39);
-            this.textBox1.TabIndex = 4;
+            this.txtCode.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCode.Location = new System.Drawing.Point(12, 310);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(190, 39);
+            this.txtCode.TabIndex = 4;
+            this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnJoinCode
             // 
@@ -96,6 +97,7 @@
             this.btnJoinCode.TabIndex = 5;
             this.btnJoinCode.Text = "Join Quiz";
             this.btnJoinCode.UseVisualStyleBackColor = true;
+            this.btnJoinCode.Click += new System.EventHandler(this.btnJoinCode_Click);
             // 
             // label2
             // 
@@ -138,7 +140,7 @@
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnJoinCode);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCode);
             this.Controls.Add(this.btnMyScores);
             this.Controls.Add(this.flpContext);
             this.Controls.Add(this.lblContext);
@@ -156,7 +158,7 @@
         private System.Windows.Forms.Label lblContext;
         private System.Windows.Forms.FlowLayoutPanel flpContext;
         private System.Windows.Forms.Button btnMyScores;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Button btnJoinCode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnHome;

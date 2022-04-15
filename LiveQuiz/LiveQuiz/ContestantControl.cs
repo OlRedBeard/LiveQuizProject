@@ -14,12 +14,22 @@ namespace LiveQuiz
     public partial class ContestantControl : UserControl
     {
         public User theuser;
+        public UserScore theUserScore;
 
-        public ContestantControl(User u)
+        public ContestantControl(Tuple<User, UserScore> tuple)
         {
             InitializeComponent();
-            this.theuser = u;
-            lblUsername.Text = u.Username;
+            this.theuser = tuple.Item1;
+            this.theUserScore = tuple.Item2;
+
+            lblUsername.Text = theuser.Username;
+            lblScore.Text = theUserScore.Score.ToString();
+            lblTime.Text = theUserScore.TimeToAnswer.ToString() + "s";
+
+            lblCorr.Text = theUserScore.NumCorrect.ToString();
+
+            int numWrong = theUserScore.NumQuestions - theUserScore.NumCorrect;
+            lblInc.Text = numWrong.ToString();
         }
     }
 }

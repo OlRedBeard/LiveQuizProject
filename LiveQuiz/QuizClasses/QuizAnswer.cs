@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuizClasses
 {
+    [Serializable]
     public class QuizAnswer
     {
         public int Id { get; set; }
