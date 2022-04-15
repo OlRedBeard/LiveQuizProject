@@ -15,6 +15,13 @@ namespace QuizClasses
         public int Score { get; set; }
         public int NumQuestions { get; set; }
         public int NumCorrect { get; set; }
-        public int TimeToAnswer { get; set; }
+        public int AvgTimeToAnswer { get; set; }
+        public int TotalTime { get; set; }
+
+        public void AddTime(int time)
+        {
+            TotalTime += time;
+            AvgTimeToAnswer = TotalTime / NumQuestions;
+        }
     }
 }

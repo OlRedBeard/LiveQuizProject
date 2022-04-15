@@ -135,7 +135,7 @@ namespace LiveQuiz
                 if (user.Item1.Id == answer.Item1.Id)
                 {
                     user.Item2.NumQuestions++;
-                    user.Item2.TimeToAnswer = (300 - answer.Item3) / 10;
+                    user.Item2.AddTime((300 - answer.Item3) / 10);
 
                     if (answer.Item2.Correct == true)
                     {
@@ -171,7 +171,7 @@ namespace LiveQuiz
             UserScore us = new UserScore();
             us.NumQuestions = 0;
             us.QuizName = theQuiz.Title;
-            us.TimeToAnswer = 30;
+            us.AvgTimeToAnswer = 0;
             us.Score = 0;
             us.NumCorrect = 0;
 

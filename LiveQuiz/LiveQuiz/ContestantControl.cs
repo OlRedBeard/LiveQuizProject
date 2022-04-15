@@ -24,7 +24,7 @@ namespace LiveQuiz
 
             lblUsername.Text = theuser.Username;
             lblScore.Text = theUserScore.Score.ToString();
-            lblTime.Text = theUserScore.TimeToAnswer.ToString() + "s";
+            lblTime.Text = theUserScore.AvgTimeToAnswer.ToString() + "s";
 
             lblCorr.Text = theUserScore.NumCorrect.ToString();
 

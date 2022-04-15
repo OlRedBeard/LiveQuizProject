@@ -24,34 +24,12 @@ namespace LiveQuiz
         private void btnMyQuizzes_Click(object sender, EventArgs e)
         {
             SetMyQuiz();
-
-            //// Clear FLP
-            //flpContext.Controls.Clear();
-            //// Enable Create button
-            //btnNewQuiz.Enabled = true;
-            //btnNewQuiz.Visible = true;
-            //// Change the labels
-            //lblContext.Text = "Your Created Quizzes!";
-            //// Add this user's quizzes to the FLP
-            //List<Quiz> myQuizzes = QuiznessLayer.GetYourQuizzes();
-
-            //if (myQuizzes != null)
-            //{
-            //    foreach (Quiz q in myQuizzes)
-            //    {
-            //        QuizControl cont = new QuizControl(q, true);
-            //        cont.EditQuiz += Cont_EditQuiz;
-            //        cont.DeleteQuiz += Cont_DeleteQuiz;
-            //        cont.HostQuiz += Cont_HostQuiz;
-            //        flpContext.Controls.Add(cont);
-            //    }
-            //}
         }
 
 
         private void btnMyScores_Click(object sender, EventArgs e)
         {
-            
+            SetScores();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -138,6 +116,8 @@ namespace LiveQuiz
                 foreach (UserScore q in myScores)
                 {
                     // Add the score control to the FLP
+                    ScoreControl sc = new ScoreControl(q);
+                    flpContext.Controls.Add(sc);
                 }
             }
         }
@@ -170,7 +150,7 @@ namespace LiveQuiz
 
         private void Cont_DeleteQuiz()
         {
-            throw new NotImplementedException();
+            SetMyQuiz();
         }
     }
 }

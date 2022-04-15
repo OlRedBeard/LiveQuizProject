@@ -66,6 +66,24 @@ namespace QuizClasses
             }
         }
 
+        public static bool DeleteQuiz(int id)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    Quiz tmp = qc.Quizzes.Include(a => a.Questions).ThenInclude(b => b.Answers).Where(x => x.Id == id).SingleOrDefault();
+                    qc.Remove(tmp);
+                    qc.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool DeleteQuestion(QuizQuestion qq)
         {
             try
@@ -141,7 +159,8 @@ namespace QuizClasses
                                 us.Score = score.Score;
                                 us.NumQuestions = score.NumQuestions;
                                 us.NumCorrect = score.NumCorrect;
-                                us.TimeToAnswer = score.TimeToAnswer;
+                                us.TotalTime = score.TotalTime;
+                                us.AvgTimeToAnswer = score.AvgTimeToAnswer;
                                 exists = true;
                             }
                         }
@@ -213,7 +232,7 @@ namespace QuizClasses
                         return false;
                     else
                     {
-                        LoggedInUser = qc.Users.Where(x => x.Username == username && x.Password == hashedPass).FirstOrDefault();
+                        LoggedInUser = qc.Users.Include(a => a.UserScores).Where(x => x.Username == username && x.Password == hashedPass).FirstOrDefault();
                         return true;
                     }
                 }

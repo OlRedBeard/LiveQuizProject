@@ -76,6 +76,8 @@ namespace LiveQuiz
         private void btnDelete_Click(object sender, EventArgs e)
         {
             // Event to remove quiz
+            QuiznessLayer.DeleteQuiz(TheQuiz.Id);
+            DeleteQuiz();
         }
     }
 }
