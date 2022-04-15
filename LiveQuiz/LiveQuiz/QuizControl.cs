@@ -15,7 +15,20 @@ namespace LiveQuiz
     {
         private int QuizID;
         private bool Host;
+
         public Quiz TheQuiz { get; set; }
+
+        public event EditEventHandler EditQuiz;
+        public delegate void EditEventHandler(Quiz q);
+
+        public event DeleteEventHandler DeleteQuiz;
+        public delegate void DeleteEventHandler();
+
+        public event HostEventHandler HostQuiz;
+        public delegate void HostEventHandler(Quiz q);
+
+        public event JoinEventHandler JoinQuiz;
+        public delegate void JoinEventHandler(Quiz q);
 
         public QuizControl(Quiz q, bool host)
         {
@@ -50,21 +63,19 @@ namespace LiveQuiz
         private void btnContext_Click(object sender, EventArgs e)
         {
             if (Host)
-            {
-                // Launch hosting window
-                QuizHostForm qh = new QuizHostForm(TheQuiz);
-                this.Parent.Hide();
-                qh.ShowDialog();
-                this.Parent.Show();
-            }
+                HostQuiz(TheQuiz);
             else
-            {
-                // Fetch room code and launch player window
-                QuizContestantForm qcf = new QuizContestantForm(TheQuiz);
-                this.Parent.Hide();
-                qcf.ShowDialog();
-                this.Parent.Show();
-            }
+                JoinQuiz(TheQuiz);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            EditQuiz(TheQuiz);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Event to remove quiz
         }
     }
 }

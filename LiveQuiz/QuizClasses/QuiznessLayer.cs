@@ -46,6 +46,43 @@ namespace QuizClasses
             }
         }
 
+        public static bool UpdateQuiz(Quiz q)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    //Quiz tmp = qc.Quizzes.Where(x => x.Id == q.Id).FirstOrDefault();
+                    qc.Attach(q);
+                    qc.Entry(q).State = EntityState.Modified;
+                    qc.SaveChanges();
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool DeleteQuestion(QuizQuestion qq)
+        {
+            try
+            {
+                using (QuizContext qc = new QuizContext())
+                {
+                    qc.Remove(qq);
+                    qc.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static string? GetIPbyQuiz(Quiz q)
         {
             try

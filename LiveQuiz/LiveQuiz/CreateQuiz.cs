@@ -36,6 +36,10 @@ namespace LiveQuiz
                 else
                 {
                     // Open manual question adding window
+                    QuestionsManual qm = new QuestionsManual(newQuiz, false);
+                    this.Hide();
+                    qm.ShowDialog();
+                    this.Close();
                 }
             }
         }

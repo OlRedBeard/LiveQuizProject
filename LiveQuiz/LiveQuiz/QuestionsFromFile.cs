@@ -20,6 +20,7 @@ namespace LiveQuiz
         {
             InitializeComponent();
             this.theQuiz = quiz;
+            this.Text = theQuiz.Title;
         }
 
         private void button1_Click(object sender, EventArgs e)

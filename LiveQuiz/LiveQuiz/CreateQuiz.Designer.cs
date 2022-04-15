@@ -65,7 +65,7 @@
             this.rdoFile.Location = new System.Drawing.Point(108, 205);
             this.rdoFile.Name = "rdoFile";
             this.rdoFile.Size = new System.Drawing.Size(167, 25);
-            this.rdoFile.TabIndex = 2;
+            this.rdoFile.TabIndex = 3;
             this.rdoFile.TabStop = true;
             this.rdoFile.Text = "Make From PSV File";
             this.rdoFile.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             this.rdoManual.Location = new System.Drawing.Point(303, 205);
             this.rdoManual.Name = "rdoManual";
             this.rdoManual.Size = new System.Drawing.Size(134, 25);
-            this.rdoManual.TabIndex = 3;
+            this.rdoManual.TabIndex = 4;
             this.rdoManual.TabStop = true;
             this.rdoManual.Text = "Make Manually";
             this.rdoManual.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             this.txtTopic.Location = new System.Drawing.Point(108, 170);
             this.txtTopic.Name = "txtTopic";
             this.txtTopic.Size = new System.Drawing.Size(329, 29);
-            this.txtTopic.TabIndex = 5;
+            this.txtTopic.TabIndex = 2;
             // 
             // chkPublic
             // 
@@ -108,7 +108,7 @@
             this.chkPublic.Name = "chkPublic";
             this.chkPublic.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkPublic.Size = new System.Drawing.Size(120, 25);
-            this.chkPublic.TabIndex = 6;
+            this.chkPublic.TabIndex = 5;
             this.chkPublic.Text = "Make Public?";
             this.chkPublic.UseVisualStyleBackColor = true;
             // 
@@ -118,7 +118,7 @@
             this.btnCreate.Location = new System.Drawing.Point(303, 236);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(134, 31);
-            this.btnCreate.TabIndex = 7;
+            this.btnCreate.TabIndex = 6;
             this.btnCreate.Text = "Create Quiz";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);

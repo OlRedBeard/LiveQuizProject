@@ -21,6 +21,22 @@ namespace QuizClasses
             Answers = new List<QuizAnswer>();
         }
 
+        public override string ToString()
+        {
+            string type;
+            if (Answers.Count == 2)
+                type = "TF";
+            else
+                type = "MC";
+
+            string prev = Question;
+
+            if (Question.Length > 21)
+                prev = Question.Substring(0, 21);
+
+            return type + ": " + prev + "...";
+        }
+
         public void AddAnswer(QuizAnswer answer)
         {
             Answers.Add(answer);
