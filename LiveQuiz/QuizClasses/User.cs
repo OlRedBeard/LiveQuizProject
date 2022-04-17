@@ -18,7 +18,7 @@ namespace QuizClasses
 
         public User()
         {
-            UserScores = new List<UserScore>();
+            
         }
     }
 }

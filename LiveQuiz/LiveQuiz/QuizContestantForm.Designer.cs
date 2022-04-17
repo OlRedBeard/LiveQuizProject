@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pnlContestants = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblQuestion = new System.Windows.Forms.Label();
             this.btnAns1 = new System.Windows.Forms.Button();
@@ -42,14 +41,8 @@
             this.lblAns1 = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlContestants = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
-            // 
-            // pnlContestants
-            // 
-            this.pnlContestants.Location = new System.Drawing.Point(12, 33);
-            this.pnlContestants.Name = "pnlContestants";
-            this.pnlContestants.Size = new System.Drawing.Size(266, 575);
-            this.pnlContestants.TabIndex = 6;
             // 
             // label1
             // 
@@ -174,11 +167,19 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pnlContestants
+            // 
+            this.pnlContestants.Location = new System.Drawing.Point(12, 33);
+            this.pnlContestants.Name = "pnlContestants";
+            this.pnlContestants.Size = new System.Drawing.Size(266, 575);
+            this.pnlContestants.TabIndex = 17;
+            // 
             // QuizContestantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 625);
+            this.Controls.Add(this.pnlContestants);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.lblAns4);
             this.Controls.Add(this.lblAns3);
@@ -189,7 +190,6 @@
             this.Controls.Add(this.btnAns2);
             this.Controls.Add(this.btnAns1);
             this.Controls.Add(this.lblQuestion);
-            this.Controls.Add(this.pnlContestants);
             this.Controls.Add(this.label1);
             this.Name = "QuizContestantForm";
             this.Text = "QuizContestantForm";
@@ -200,8 +200,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlContestants;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.Button btnAns1;
@@ -214,5 +212,6 @@
         private System.Windows.Forms.Label lblAns1;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.FlowLayoutPanel pnlContestants;
     }
 }

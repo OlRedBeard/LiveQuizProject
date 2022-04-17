@@ -86,6 +86,8 @@ namespace LiveQuiz
 
         private void QuizContestantForm_Load(object sender, EventArgs e)
         {
+            HideAnswers();
+
             try
             {
                 string ip = QuiznessLayer.GetIPbyQuiz(TheQuiz);
@@ -244,22 +246,52 @@ namespace LiveQuiz
 
         private void Comm_UserAdded(Tuple<User, UserScore> u)
         {
-            // Empty the list
-            contestants.Clear();
+            bool exists = false;
 
-            // Add user to list
-            contestants.Add(u);
+            // Check if record already exists
+            foreach (Tuple<User, UserScore> v in contestants)
+            {
+                if (v.Item1.Id == u.Item1.Id)
+                    exists = true;
+            }
 
-            // Add user control to form
-            this.Invoke(new Action(() => { 
-                pnlContestants.Controls.Clear();
-                foreach (Tuple<User, UserScore> u2 in contestants)
-                {
-                    ContestantControl tmp = new ContestantControl(u2);
+            if (!exists)
+            {
+                // Add user to list
+                contestants.Add(u);
+
+                // Add user control to form
+                this.Invoke(new Action(() => {
+                    ContestantControl tmp = new ContestantControl(u);
                     pnlContestants.Controls.Add(tmp);
+                }));
+            }
+            else
+            {
+                // Update user score
+                foreach (Tuple<User, UserScore> user in contestants)
+                {
+                    if (user.Item1.Id == u.Item1.Id)
+                    {
+                        user.Item2.Score = u.Item2.Score;
+                        user.Item2.NumQuestions = u.Item2.NumQuestions;
+                        user.Item2.NumCorrect = u.Item2.NumCorrect;
+                        user.Item2.AvgTimeToAnswer = u.Item2.AvgTimeToAnswer;
+                        user.Item2.TotalTime = u.Item2.TotalTime;
+                    }
                 }
-            }));
-            
+
+                // Refresh user controls
+                this.Invoke(new Action(() =>
+                {
+                    pnlContestants.Controls.Clear();
+                    foreach (Tuple<User, UserScore> u2 in contestants)
+                    {
+                        ContestantControl tmp = new ContestantControl(u2);
+                        pnlContestants.Controls.Add(tmp);
+                    }
+                }));                
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

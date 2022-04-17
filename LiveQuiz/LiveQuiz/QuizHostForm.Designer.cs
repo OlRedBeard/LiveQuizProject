@@ -32,7 +32,6 @@
             this.lblIP = new System.Windows.Forms.Label();
             this.btnBegin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlContestants = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
             this.lblQuestion = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.btnContext = new System.Windows.Forms.Button();
             this.lblAnswers = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pnlContestants = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // cmbIP
@@ -84,13 +84,6 @@
             this.label1.Size = new System.Drawing.Size(95, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "Contestants:";
-            // 
-            // pnlContestants
-            // 
-            this.pnlContestants.Location = new System.Drawing.Point(12, 33);
-            this.pnlContestants.Name = "pnlContestants";
-            this.pnlContestants.Size = new System.Drawing.Size(266, 575);
-            this.pnlContestants.TabIndex = 4;
             // 
             // label2
             // 
@@ -198,11 +191,20 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Current Question:";
             // 
+            // pnlContestants
+            // 
+            this.pnlContestants.AutoScroll = true;
+            this.pnlContestants.Location = new System.Drawing.Point(12, 33);
+            this.pnlContestants.Name = "pnlContestants";
+            this.pnlContestants.Size = new System.Drawing.Size(266, 575);
+            this.pnlContestants.TabIndex = 15;
+            // 
             // QuizHostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 625);
+            this.Controls.Add(this.pnlContestants);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblAnswers);
             this.Controls.Add(this.btnContext);
@@ -213,7 +215,6 @@
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.pnlContestants);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBegin);
             this.Controls.Add(this.lblIP);
@@ -233,7 +234,6 @@
         private System.Windows.Forms.Label lblIP;
         private System.Windows.Forms.Button btnBegin;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlContestants;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblQuestion;
@@ -244,5 +244,6 @@
         private System.Windows.Forms.Button btnContext;
         private System.Windows.Forms.Label lblAnswers;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel pnlContestants;
     }
 }

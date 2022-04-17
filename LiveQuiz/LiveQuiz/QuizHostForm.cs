@@ -129,7 +129,7 @@ namespace LiveQuiz
             numAnswers++;
             lblAnswers.Text = "Answers: " + numAnswers.ToString() + "/" + numContestants.ToString();
 
-            // Update local controls -- THIS IS NOT WORKING, WILL NOT EVER HIT THE FIRST IF
+            // Update local controls
             foreach (Tuple<User, UserScore> user in contestants)
             {
                 if (user.Item1.Id == answer.Item1.Id)
@@ -145,6 +145,7 @@ namespace LiveQuiz
                     }
                 }
             }
+
             // Relay tuple to allow clients to do the same
             pnlContestants.Controls.Clear();
             foreach (Tuple<User, UserScore> u2 in contestants)
@@ -175,19 +176,29 @@ namespace LiveQuiz
             us.Score = 0;
             us.NumCorrect = 0;
 
-            // Add user to list
-            contestants.Add(new Tuple<User, UserScore>(u, us));
+            // Create a tuple for the contestants list
+            Tuple<User, UserScore> u2 = new Tuple<User, UserScore>(u, us);
+            bool exists = false;
 
-            // Add user control to form
-            pnlContestants.Controls.Clear();
-            foreach(Tuple<User, UserScore> u2 in contestants)
+            // Check if the user already exists
+            foreach (Tuple<User, UserScore> u3 in contestants)
             {
+                if (u3.Item1.Id == u2.Item1.Id)
+                    exists = true;
+            }
+
+            // If the user does not exist, add them
+            if (!exists)
+            {
+                contestants.Add(u2);
+
+                // Add user control to form
                 ContestantControl tmp = new ContestantControl(u2);
                 pnlContestants.Controls.Add(tmp);
+            }            
 
-                // Send to contestants
-                RelayInfo(u2);
-            }
+            // Send to contestants
+            RelayInfo(u2);
         }
 
         private void Server_NewClientConnected(HostServer client)

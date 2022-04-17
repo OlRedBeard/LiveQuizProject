@@ -246,7 +246,7 @@ namespace QuizClasses
             {
                 using (QuizContext qc = new QuizContext())
                 {
-                    int count = qc.Users.Where(x => x.Username == username && x.Password == hashedPass).Count();
+                    int count = qc.Users.Include(a => a.UserScores).Where(x => x.Username == username && x.Password == hashedPass).Count();
                     if (count < 1)
                         return false;
                     else

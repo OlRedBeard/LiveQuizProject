@@ -48,7 +48,9 @@ namespace LiveQuiz
         {
             Quiz tmp = QuiznessLayer.GetQuizbyCode(txtCode.Text);
             QuizContestantForm qcf = new QuizContestantForm(tmp);
+            this.Hide();
             qcf.ShowDialog();
+            this.Show();
         }
 
         private void SetHome()
