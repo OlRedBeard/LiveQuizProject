@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbIP = new System.Windows.Forms.ComboBox();
             this.lblIP = new System.Windows.Forms.Label();
             this.btnBegin = new System.Windows.Forms.Button();
@@ -43,6 +44,8 @@
             this.lblAnswers = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlContestants = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // cmbIP
@@ -109,9 +112,9 @@
             // 
             this.lblQuestion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblQuestion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblQuestion.Location = new System.Drawing.Point(296, 33);
+            this.lblQuestion.Location = new System.Drawing.Point(296, 57);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(964, 267);
+            this.lblQuestion.Size = new System.Drawing.Size(964, 268);
             this.lblQuestion.TabIndex = 7;
             this.lblQuestion.Text = "label3";
             this.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,7 +123,7 @@
             // 
             this.lblAns1.AutoSize = true;
             this.lblAns1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAns1.Location = new System.Drawing.Point(296, 325);
+            this.lblAns1.Location = new System.Drawing.Point(296, 349);
             this.lblAns1.Name = "lblAns1";
             this.lblAns1.Size = new System.Drawing.Size(63, 25);
             this.lblAns1.TabIndex = 8;
@@ -131,7 +134,7 @@
             // 
             this.lblAns2.AutoSize = true;
             this.lblAns2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAns2.Location = new System.Drawing.Point(296, 360);
+            this.lblAns2.Location = new System.Drawing.Point(296, 384);
             this.lblAns2.Name = "lblAns2";
             this.lblAns2.Size = new System.Drawing.Size(63, 25);
             this.lblAns2.TabIndex = 9;
@@ -142,7 +145,7 @@
             // 
             this.lblAns3.AutoSize = true;
             this.lblAns3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAns3.Location = new System.Drawing.Point(296, 396);
+            this.lblAns3.Location = new System.Drawing.Point(296, 420);
             this.lblAns3.Name = "lblAns3";
             this.lblAns3.Size = new System.Drawing.Size(63, 25);
             this.lblAns3.TabIndex = 10;
@@ -153,7 +156,7 @@
             // 
             this.lblAns4.AutoSize = true;
             this.lblAns4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAns4.Location = new System.Drawing.Point(296, 432);
+            this.lblAns4.Location = new System.Drawing.Point(296, 456);
             this.lblAns4.Name = "lblAns4";
             this.lblAns4.Size = new System.Drawing.Size(63, 25);
             this.lblAns4.TabIndex = 11;
@@ -185,7 +188,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(294, 9);
+            this.label3.Location = new System.Drawing.Point(294, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 21);
             this.label3.TabIndex = 14;
@@ -199,11 +202,27 @@
             this.pnlContestants.Size = new System.Drawing.Size(266, 575);
             this.pnlContestants.TabIndex = 15;
             // 
+            // lblTimer
+            // 
+            this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTimer.Location = new System.Drawing.Point(433, 9);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(687, 52);
+            this.lblTimer.TabIndex = 16;
+            this.lblTimer.Text = "30";
+            this.lblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // QuizHostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 625);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.pnlContestants);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblAnswers);
@@ -245,5 +264,7 @@
         private System.Windows.Forms.Label lblAnswers;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel pnlContestants;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Timer timer1;
     }
 }

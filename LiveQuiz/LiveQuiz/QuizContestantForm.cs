@@ -323,7 +323,8 @@ namespace LiveQuiz
         private void timer1_Tick(object sender, EventArgs e)
         {
             Points -= 10;
-            this.Invoke(new Action(() => { lblTimer.Text = Points.ToString(); }));
+            if (this.IsHandleCreated)
+                this.Invoke(new Action(() => { lblTimer.Text = Points.ToString(); }));
 
             if (Points == 0)
                 timer1.Stop();

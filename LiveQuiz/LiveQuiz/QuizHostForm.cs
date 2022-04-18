@@ -26,6 +26,7 @@ namespace LiveQuiz
         public static int numContestants = 0;
         public int numAnswers = 0;
         public int numCorr = 0;
+        public int timer = 30;
         public static Queue<QuizQuestion> questions = new Queue<QuizQuestion>();
 
         public QuizHostForm(Quiz q)
@@ -48,6 +49,7 @@ namespace LiveQuiz
             lblAns3.Visible = false;
             lblAns4.Visible = false;
             lblAnswers.Visible = false;
+            lblTimer.Visible = false;
         }
 
         private void ShowAnswers(int num)
@@ -272,10 +274,13 @@ namespace LiveQuiz
                 // Reset counters
                 numCorr = 0;
                 numAnswers = 0;
+                timer = 30;
 
                 // Track answers vs number of contestants
                 lblAnswers.Text = "Answers: " + numAnswers.ToString() + "/" + numContestants.ToString();
                 lblAnswers.Visible = true;
+                lblTimer.Visible = true;
+                timer1.Start();
 
                 // Display the question and answers
                 lblQuestion.Text = qq.Question;
@@ -307,6 +312,7 @@ namespace LiveQuiz
                 // Show details
                 lblQuestion.Text = "Correct Answers: " + numCorr.ToString() + "\nIncorrect Answers: " + (numContestants - numCorr).ToString();
                 HideAnswers();
+                timer1.Stop();
                 
                 // Change the context button
                 if (questions.Count > 0)
@@ -435,6 +441,18 @@ namespace LiveQuiz
             }
 
             return highScores;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer--;
+            lblTimer.Text = timer.ToString();
+
+            if (timer == 0)
+            {
+                if (btnContext.Text == "End Question")
+                    btnContext_Click(null, null);
+            }
         }
     }
 }
