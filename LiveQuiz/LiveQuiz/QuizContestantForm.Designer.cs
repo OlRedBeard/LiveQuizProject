@@ -193,6 +193,7 @@
             this.Controls.Add(this.label1);
             this.Name = "QuizContestantForm";
             this.Text = "QuizContestantForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuizContestantForm_FormClosing);
             this.Load += new System.EventHandler(this.QuizContestantForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -108,12 +108,32 @@ namespace LiveQuiz
                     comm.AnswerResult += Comm_AnswerResult;
                     comm.FinalResults += Comm_FinalResults;
                     comm.GameOver += Comm_GameOver;
+                    comm.UserRemoval += Comm_UserRemoval;
                 }
             }
             catch
             {
                 MessageBox.Show("Could Not Connect to Quiz");
                 this.Close();
+            }
+        }
+
+        private void Comm_UserRemoval(List<Tuple<User, UserScore>> remove)
+        {
+            contestants = remove;
+
+            // Refresh user controls
+            if (this.IsHandleCreated)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    pnlContestants.Controls.Clear();
+                    foreach (Tuple<User, UserScore> u2 in contestants)
+                    {
+                        ContestantControl tmp = new ContestantControl(u2);
+                        pnlContestants.Controls.Add(tmp);
+                    }
+                }));
             }
         }
 
@@ -261,10 +281,13 @@ namespace LiveQuiz
                 contestants.Add(u);
 
                 // Add user control to form
-                this.Invoke(new Action(() => {
-                    ContestantControl tmp = new ContestantControl(u);
-                    pnlContestants.Controls.Add(tmp);
-                }));
+                if (this.IsHandleCreated)
+                {
+                    this.Invoke(new Action(() => {
+                        ContestantControl tmp = new ContestantControl(u);
+                        pnlContestants.Controls.Add(tmp);
+                    }));
+                }                
             }
             else
             {
@@ -282,15 +305,18 @@ namespace LiveQuiz
                 }
 
                 // Refresh user controls
-                this.Invoke(new Action(() =>
+                if (this.IsHandleCreated)
                 {
-                    pnlContestants.Controls.Clear();
-                    foreach (Tuple<User, UserScore> u2 in contestants)
+                    this.Invoke(new Action(() =>
                     {
-                        ContestantControl tmp = new ContestantControl(u2);
-                        pnlContestants.Controls.Add(tmp);
-                    }
-                }));                
+                        pnlContestants.Controls.Clear();
+                        foreach (Tuple<User, UserScore> u2 in contestants)
+                        {
+                            ContestantControl tmp = new ContestantControl(u2);
+                            pnlContestants.Controls.Add(tmp);
+                        }
+                    }));
+                }                              
             }
         }
 
@@ -301,6 +327,20 @@ namespace LiveQuiz
 
             if (Points == 0)
                 timer1.Stop();
+        }
+
+        private void QuizContestantForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Tuple<User, UserScore> tmp = null;
+
+            foreach(Tuple<User, UserScore> u in contestants)
+            {
+                if (u.Item1.Id == QuiznessLayer.LoggedInUser.Id)
+                    tmp = u;
+            }
+
+            contestants.Remove(tmp);
+            comm.RemoveUser(QuiznessLayer.LoggedInUser);
         }
     }
 }

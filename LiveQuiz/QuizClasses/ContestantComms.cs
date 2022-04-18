@@ -39,6 +39,9 @@ namespace QuizClasses
         public event AnswerResultEventHandler AnswerResult;
         public delegate void AnswerResultEventHandler(Tuple<User, QuizAnswer, int> answer);
 
+        public event RemoveUserEventHandler UserRemoval;
+        public delegate void RemoveUserEventHandler(List<Tuple<User, UserScore>> remove);
+
         public event ResultsEventHandler FinalResults;
         public delegate void ResultsEventHandler(string results);
 
@@ -53,6 +56,13 @@ namespace QuizClasses
             bgw.ProgressChanged += Bgw_ProgressChanged;
             bgw.DoWork += Bgw_DoWork;
             bgw.RunWorkerAsync();
+        }
+
+        public void RemoveUser(User u)
+        {
+            Tuple<User, int> end = new Tuple<User, int>(u, 0);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(writer.BaseStream, end);
         }
 
         public void SendUserInfo(User u)
@@ -109,6 +119,10 @@ namespace QuizClasses
                         {
                             bgw.ReportProgress(4, o);
                         }
+                        else if (o is List<Tuple<User, UserScore>>)
+                        {
+                            bgw.ReportProgress(5, o);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -124,26 +138,23 @@ namespace QuizClasses
 
         private void Bgw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if(e.ProgressPercentage == 0)
-            {
+            if (e.ProgressPercentage == 0)
                 UserAdded((Tuple<User, UserScore>)e.UserState);
-            }
+
             else if (e.ProgressPercentage == 1)
-            {
                 NewQuestion((QuizQuestion)e.UserState);
-            }
+
             else if (e.ProgressPercentage == 2)
-            {
                 AnswerResult((Tuple<User, QuizAnswer, int>)e.UserState);
-            }
+
             else if (e.ProgressPercentage == 3)
-            {
                 GameOver();
-            }
+
             else if (e.ProgressPercentage == 4)
-            {
                 FinalResults(e.UserState.ToString());
-            }
+
+            else if (e.ProgressPercentage == 5)
+                UserRemoval((List<Tuple<User, UserScore>>)e.UserState);
         }
     }
 }

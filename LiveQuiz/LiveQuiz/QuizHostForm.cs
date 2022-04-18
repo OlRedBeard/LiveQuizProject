@@ -78,6 +78,7 @@ namespace LiveQuiz
                 server.NewClientConnected += Server_NewClientConnected;
                 server.UserAdded += Server_UserAdded;
                 server.UserAnswer += Server_UserAnswer;
+                server.UserLeft += Server_UserLeft;
 
                 // Create quiz instance
                 qi = new QuizInstance();
@@ -158,6 +159,20 @@ namespace LiveQuiz
             }
         }
 
+        private void RefreshUserControls()
+        {
+            // Relay tuple to allow clients to do the same
+            pnlContestants.Controls.Clear();
+            foreach (Tuple<User, UserScore> u2 in contestants)
+            {
+                ContestantControl tmp = new ContestantControl(u2);
+                pnlContestants.Controls.Add(tmp);
+
+                // Send to contestants
+                RelayInfo(u2);
+            }
+        }
+
         private void RelayInfo(object o)
         {
             foreach (HostServer serv in servers)
@@ -212,11 +227,30 @@ namespace LiveQuiz
             server.NewClientConnected += Server_NewClientConnected;
             server.UserAdded += Server_UserAdded; 
             server.UserAnswer += Server_UserAnswer;
+            server.UserLeft += Server_UserLeft;
+        }
+
+        private void Server_UserLeft(HostServer client, Tuple<User, int> user)
+        {
+            Tuple<User, UserScore> tmp = null;
+
+            foreach (Tuple<User, UserScore> u in contestants)
+            {
+                if (u.Item1.Id == user.Item1.Id)
+                    tmp = u;
+            }
+            if (tmp != null)
+            {
+                contestants.Remove(tmp);                
+            }
+
+            RelayInfo(contestants);
+            RefreshUserControls();
         }
 
         private void QuizHostForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void QuizHostForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -325,11 +359,13 @@ namespace LiveQuiz
                         if (first == null)
                         {
                             first = pair;
+                            hs = pair.Item2.Score;
                         }
                         else
                         {
                             second = first;
                             first = pair;
+                            hs = pair.Item2.Score;
                         }
                     }
                     else

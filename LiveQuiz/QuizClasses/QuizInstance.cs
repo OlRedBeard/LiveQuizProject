@@ -24,7 +24,7 @@ namespace QuizClasses
 
         public string GetRoomCode()
         {
-            const string chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            const string chars = "ABCDEFGHKLMNPQRSTUVWXYZ23456789";
             return new string(Enumerable.Repeat(chars, 5).Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
